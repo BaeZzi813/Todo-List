@@ -9,11 +9,16 @@ type ButtonSize = "small" | "large";
 interface ButtonProps {
   type?: ButtonType;
   size?: ButtonSize;
+  onClick: () => void;
 }
 
-export default function Button({ type = "add", size = "large" }: ButtonProps) {
+export default function Button({
+  type = "add",
+  size = "large",
+  onClick,
+}: ButtonProps) {
   const baseStyles =
-    "border-2 rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
+    "border-2 cursor-pointer rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
 
   const types = {
     add: {
@@ -40,7 +45,10 @@ export default function Button({ type = "add", size = "large" }: ButtonProps) {
 
   return (
     <>
-      <button className={`${baseStyles} ${types[type].color} ${sizes[size]} `}>
+      <button
+        onClick={onClick}
+        className={`${baseStyles} ${types[type].color} ${sizes[size]} `}
+      >
         <Image
           src={types[type].icon}
           alt={`${types[type].text} 아이콘`}
