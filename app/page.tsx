@@ -1,10 +1,10 @@
 "use client";
 
-import Searchbar from "./components/Searchbar";
-import Todo from "./_todo";
-import Done from "./_done";
-import { useEffect, useState } from "react";
 import { getTodos, patchTodos } from "@/services/todoService";
+import { useEffect, useState } from "react";
+import Done from "./_done";
+import Todo from "./_todo";
+import Searchbar from "./components/Searchbar";
 
 export default function Home() {
   const [todos, setTodos] = useState([]);

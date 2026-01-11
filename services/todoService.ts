@@ -14,3 +14,8 @@ export const patchTodos = async (itemId:number, data: {isCompleted?: boolean; na
     const response = await axiosInstance.patch(`/items/${itemId}`, data)
     return response.data;
 }
+
+export const getDetailTodos = async (itemId:string) => {
+    const response = await axiosInstance.get(`/items/${itemId}`)
+    return response.data;
+}

@@ -1,10 +1,11 @@
 "use client";
 
 import todoImg from "@/public/todo.svg";
-import Image from "next/image";
 import todoIcon from "@/public/todoCricle.svg";
 import todoEmptyImg from "@/public/todoEmpty.svg";
 import { TodoProps } from "@/types/todo";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Todo({ todos, handleToggleTodo }: TodoProps) {
   const incompletedTodos = todos.filter((todo) => !todo.isCompleted);
@@ -27,18 +28,22 @@ export default function Todo({ todos, handleToggleTodo }: TodoProps) {
         ) : (
           <ul className="flex flex-col gap-4">
             {incompletedTodos.map((todo) => (
-              <li
-                className="flex gap-4 h-12.5 pl-3 items-center bg-white border-2 border-slate-900 rounded-[27px]"
-                key={todo.id}
-              >
-                <button
-                  onClick={() => handleToggleTodo(todo.id, todo.isCompleted)}
-                  className="cursor-pointer"
+              <>
+                <li
+                  className="flex gap-4 h-12.5 pl-3 items-center bg-white border-2 border-slate-900 rounded-[27px]"
+                  key={todo.id}
                 >
-                  <Image src={todoIcon} alt="할 일 아이콘" />
-                </button>
-                {todo.name}
-              </li>
+                  <button
+                    onClick={() => handleToggleTodo(todo.id, todo.isCompleted)}
+                    className="cursor-pointer"
+                  >
+                    <Image src={todoIcon} alt="할 일 아이콘" />
+                  </button>
+                  <Link href={`/items/${todo.id}`} className="flex-1">
+                    {todo.name}
+                  </Link>
+                </li>
+              </>
             ))}
           </ul>
         )}

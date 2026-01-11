@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import logofullImg from "@/public/logofull.svg";
 import logoImg from "@/public/logo.svg";
-import { useMediaQuery } from "react-responsive";
+import logofullImg from "@/public/logofull.svg";
+import Image from "next/image";
 import Link from "next/link";
+import { useMediaQuery } from "react-responsive";
 
 export default function Navbar() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px )" });
@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="lg:w-300 lg:mx-auto">
           <Link href="/">
             <Image
-              className="h-10 ml-4 md:ml-6 lg:ml-0"
+              className="ml-4 md:ml-6 lg:ml-0"
               src={isMobile ? logoImg : logofullImg}
               alt="로고 이미지"
             />
