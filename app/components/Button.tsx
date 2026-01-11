@@ -1,21 +1,20 @@
+import checkIcon from "@/public/check.svg";
 import plusIcon from "@/public/plus.svg";
 import xIcon from "@/public/x.svg";
-import checkIcon from "@/public/check.svg";
 import Image from "next/image";
 
 type ButtonType = "add" | "delete" | "edit";
-type ButtonSize = "small" | "large";
 
 interface ButtonProps {
   type?: ButtonType;
-  size?: ButtonSize;
-  onClick: () => void;
+  handleAddTodo: () => void;
+  className?: string;
 }
 
 export default function Button({
   type = "add",
-  size = "large",
-  onClick,
+  handleAddTodo,
+  className = "",
 }: ButtonProps) {
   const baseStyles =
     "border-2 cursor-pointer rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
@@ -38,16 +37,11 @@ export default function Button({
     },
   };
 
-  const sizes = {
-    small: "w-14 h-14",
-    large: "w-42 h-14 font-bold text-[16px]",
-  };
-
   return (
     <>
       <button
-        onClick={onClick}
-        className={`${baseStyles} ${types[type].color} ${sizes[size]} `}
+        onClick={handleAddTodo}
+        className={`${baseStyles} ${types[type].color} ${className} w-14 h-14 md:w-42 md:h-14 md:font-bold md:text-[16px] `}
       >
         <Image
           src={types[type].icon}
@@ -55,7 +49,7 @@ export default function Button({
           width={16}
           height={16}
         />
-        {size === "large" && types[type].text}
+        <span className="hidden md:inline">{types[type].text}</span>
       </button>
     </>
   );

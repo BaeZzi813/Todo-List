@@ -1,14 +1,19 @@
 "use client";
 
-import { useMediaQuery } from "react-responsive";
-import Button from "./Button";
-import { useState } from "react";
 import { postTodos } from "@/services/todoService";
+import { Todo } from "@/types/todo";
+import { useState } from "react";
+import Button from "./Button";
 
-export default function Searchbar({ onSubmit }: { onSubmit: () => void }) {
-  const isMobile = useMediaQuery({ query: "(max-width: 767px )" });
-
+export default function Searchbar({
+  onSubmit,
+  todos,
+}: {
+  todos: Todo[];
+  onSubmit: () => void;
+}) {
   const [text, setText] = useState("");
+  const incompletedTodos = todos.filter((todo) => !todo.isCompleted);
 
   const handleAddTodo = async () => {
     if (!text.trim()) return;
@@ -38,7 +43,11 @@ export default function Searchbar({ onSubmit }: { onSubmit: () => void }) {
           className="pl-6 focus:outline-none flex-1 border-2 rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]"
           placeholder="할 일을 입력해주세요"
         />
-        <Button onClick={handleAddTodo} size={isMobile ? "small" : "large"} />
+        {incompletedTodos.length === 0 ? (
+          <Button handleAddTodo={handleAddTodo} className="bg-violet-600" />
+        ) : (
+          <Button handleAddTodo={handleAddTodo} />
+        )}
       </div>
     </>
   );

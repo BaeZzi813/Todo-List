@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <div className="bg-gray-50 min-h-screen">
         <div className="w-full px-4 md:px-0 mx-auto md:max-w-3xl lg:max-w-300">
-          <Searchbar onSubmit={fetchData} />
+          <Searchbar onSubmit={fetchData} todos={todos} />
           <div className="mt-6 flex flex-col gap-12 lg:flex-row">
             <Todo todos={todos} handleToggleTodo={handleToggleTodo} />
             <Done todos={todos} handleToggleTodo={handleToggleTodo} />
