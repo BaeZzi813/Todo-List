@@ -15,7 +15,17 @@ export const patchTodos = async (itemId:number, data: {isCompleted?: boolean; na
     return response.data;
 }
 
-export const getDetailTodos = async (itemId:string) => {
+export const getDetailTodos = async (itemId:number) => {
     const response = await axiosInstance.get(`/items/${itemId}`)
+    return response.data;
+}
+
+export const postImage = async (file: File) => {
+    const formData = new FormData()
+    formData.append('image', file);
+
+    const response = await axiosInstance.post('/images/upload', formData, {
+        headers: {'Content-Type': 'multipart/form-data'}
+    })
     return response.data;
 }

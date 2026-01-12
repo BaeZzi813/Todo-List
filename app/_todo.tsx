@@ -28,22 +28,20 @@ export default function Todo({ todos, handleToggleTodo }: TodoProps) {
         ) : (
           <ul className="flex flex-col gap-4">
             {incompletedTodos.map((todo) => (
-              <>
-                <li
-                  className="flex gap-4 h-12.5 pl-3 items-center bg-white border-2 border-slate-900 rounded-[27px]"
-                  key={todo.id}
+              <li
+                className="flex gap-4 h-12.5 pl-3 items-center bg-white border-2 border-slate-900 rounded-[27px]"
+                key={todo.id}
+              >
+                <button
+                  onClick={() => handleToggleTodo(todo.id, todo.isCompleted)}
+                  className="cursor-pointer"
                 >
-                  <button
-                    onClick={() => handleToggleTodo(todo.id, todo.isCompleted)}
-                    className="cursor-pointer"
-                  >
-                    <Image src={todoIcon} alt="할 일 아이콘" />
-                  </button>
-                  <Link href={`/items/${todo.id}`} className="flex-1">
-                    {todo.name}
-                  </Link>
-                </li>
-              </>
+                  <Image src={todoIcon} alt="할 일 아이콘" />
+                </button>
+                <Link href={`/items/${todo.id}`} className="flex-1">
+                  {todo.name}
+                </Link>
+              </li>
             ))}
           </ul>
         )}
