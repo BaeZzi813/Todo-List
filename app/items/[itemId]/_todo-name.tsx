@@ -45,7 +45,7 @@ export default function TodoName({
             onClick={handleToggleComplete}
             className="cursor-pointer"
           />
-          <div className="w-[186px]">
+          <div className="w-[138px]">
             {!isEditing ? (
               <span
                 onClick={startEditing}
