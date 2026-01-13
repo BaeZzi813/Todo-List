@@ -11,6 +11,7 @@ interface ButtonProps {
   onEdit?: () => void;
   onDelete?: () => void;
   className?: string;
+  isActive?: boolean;
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   onEdit,
   onDelete,
   className = "",
+  isActive,
 }: ButtonProps) {
   const baseStyles =
     "border-2 cursor-pointer rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
@@ -67,7 +69,9 @@ export default function Button({
     <>
       <button
         onClick={handleClick}
-        className={`${baseStyles} ${types[type].color} ${className} ${currentType.mobileWidth} w-14 h-14 md:w-42 md:h-14 md:font-bold md:text-[16px] `}
+        className={`${baseStyles}  ${className} ${currentType.mobileWidth} ${
+          isActive ? "bg-lime-300" : types[type].color
+        } w-14 h-14 md:w-42 md:h-14 md:font-bold md:text-[16px] `}
       >
         <Image
           src={currentType.icon}

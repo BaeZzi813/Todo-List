@@ -12,7 +12,7 @@ export default function Navbar() {
     <>
       <div className="border-b border-b-slate-200 h-15 flex items-center ">
         <div className="lg:w-300 lg:mx-auto">
-          <Link href="/">
+          <Link href="/" className="w-fit flex items-center">
             <Image
               className="ml-4 md:ml-6 lg:ml-0"
               src={isMobile ? logoImg : logofullImg}

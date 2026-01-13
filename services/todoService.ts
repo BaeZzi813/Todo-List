@@ -10,7 +10,7 @@ export const getTodos = async () => {
     return response.data;
 }
 
-export const patchTodos = async (itemId:number, data: {isCompleted?: boolean; name?:string; memeo?:string; imageUrl?: string}) => {
+export const patchTodos = async (itemId:number, data: {isCompleted?: boolean; name?:string; memo?:string; imageUrl?: string}) => {
     const response = await axiosInstance.patch(`/items/${itemId}`, data)
     return response.data;
 }
@@ -27,5 +27,10 @@ export const postImage = async (file: File) => {
     const response = await axiosInstance.post('/images/upload', formData, {
         headers: {'Content-Type': 'multipart/form-data'}
     })
+    return response.data;
+}
+
+export const deleteTodos = async (itemId:number) => {
+    const response = await axiosInstance.delete(`/items/${itemId}`)
     return response.data;
 }

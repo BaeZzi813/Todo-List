@@ -31,7 +31,7 @@ export default function TodoMemo({ memo, handleMemoChange }: TodoMemoProps) {
         {!isEditing ? (
           <div
             onClick={startEditing}
-            className="absolute memo-scroll top-14 left-4 right-4 resize-none h-57.25"
+            className="overflow-y-auto absolute memo-scroll top-14 left-4 right-4 resize-none h-57.25"
           >
             {memo}
           </div>
@@ -41,7 +41,7 @@ export default function TodoMemo({ memo, handleMemoChange }: TodoMemoProps) {
             value={memo}
             onChange={(e) => handleMemoChange(e.target.value)}
             onBlur={() => setIsEditing(false)}
-            className="absolute memo-scroll top-14 left-4 right-4 resize-none h-57.25"
+            className="absolute outline-none memo-scroll top-14 left-4 right-4 resize-none h-57.25"
           />
         )}
       </div>

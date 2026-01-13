@@ -1,10 +1,11 @@
 "use client";
 
 import doneImg from "@/public/done.svg";
-import Image from "next/image";
 import doneIcon from "@/public/doneCircle.svg";
 import doneEmptyImg from "@/public/doneEmpty.svg";
 import { TodoProps } from "@/types/todo";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Done({ todos, handleToggleTodo }: TodoProps) {
   const completedTodos = todos.filter((todo) => todo.isCompleted);
@@ -42,7 +43,9 @@ export default function Done({ todos, handleToggleTodo }: TodoProps) {
                     alt="한 일 아이콘"
                   />
                 </button>
-                {todo.name}
+                <Link href={`/items/${todo.id}`} className="flex-1">
+                  {todo.name}
+                </Link>
               </li>
             ))}
           </ul>
