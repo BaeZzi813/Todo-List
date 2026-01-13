@@ -6,7 +6,7 @@ import Image from "next/image";
 type ButtonType = "add" | "delete" | "edit";
 
 interface ButtonProps {
-  type: ButtonType;
+  type?: ButtonType;
   handleAddTodo?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
