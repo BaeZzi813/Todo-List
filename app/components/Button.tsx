@@ -31,7 +31,7 @@ export default function Button({
       color: "bg-slate-200 text-slate-900",
       icon: plusIcon,
       showTextOnMobile: false,
-      mobileWidth: "w-14",
+      mobileWidth: "min-w-14 min-h-14",
     },
     delete: {
       text: "삭제하기",
@@ -71,7 +71,7 @@ export default function Button({
         onClick={handleClick}
         className={`${baseStyles}  ${className} ${currentType.mobileWidth} ${
           isActive ? "bg-lime-300" : types[type].color
-        } h-14 md:w-42 md:h-14 md:font-bold md:text-[16px] `}
+        } md:w-42 md:h-14 md:font-bold md:text-[16px] `}
       >
         <Image
           src={currentType.icon}
