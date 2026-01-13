@@ -23,7 +23,7 @@ export default function Button({
   isActive,
 }: ButtonProps) {
   const baseStyles =
-    "border-2 cursor-pointer rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
+    "box-border border-2 cursor-pointer rounded-3xl border-slate-900 shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] flex justify-center items-center gap-1";
 
   const types = {
     add: {
@@ -31,7 +31,7 @@ export default function Button({
       color: "bg-slate-200 text-slate-900",
       icon: plusIcon,
       showTextOnMobile: false,
-      mobileWidth: "min-w-14",
+      mobileWidth: "w-14",
     },
     delete: {
       text: "삭제하기",
